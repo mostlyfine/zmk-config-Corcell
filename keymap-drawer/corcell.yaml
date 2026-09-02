@@ -1,7 +1,7 @@
 layout: {zmk_keyboard: corcell}
 layers:
   default:
-  - ESC
+  - TAB
   - Q
   - W
   - E
@@ -13,7 +13,7 @@ layers:
   - O
   - P
   - BSPC
-  - TAB
+  - LCTRL
   - A
   - S
   - D
@@ -23,7 +23,7 @@ layers:
   - J
   - K
   - L
-  - ':'
+  - ;
   - RET
   - LSHFT
   - Z
@@ -31,22 +31,22 @@ layers:
   - C
   - V
   - B
-  - '9'
-  - '8'
+  - VOLUME UP
+  - VOLUME DOWN
   - N
   - M
   - ','
   - .
   - UP
-  - '?'
-  - LCTRL
-  - LGUI
+  - ''''
+  - '3'
+  - Ctl+LEFT COMMAND
   - LALT
   - '1'
-  - '2'
+  - LEFT COMMAND
+  - ESCAPE
   - SPACE
-  - SPACE
-  - '3'
+  - /
   - {t: A, h: '5'}
   - LEFT
   - DOWN
@@ -66,14 +66,14 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - '"'
-  - ;
-  - /
-  - '-'
-  - KP PLUS
+  - {t: ▽, type: trans}
+  - '`'
   - '='
-  - '"'
-  - ''''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - '-'
+  - '['
+  - ']'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -145,7 +145,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -154,12 +154,12 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   '3':
-  - ''
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - BT CLR
+  - {t: BT, h: '0'}
+  - {t: BT, h: '1'}
+  - {t: BT, h: '2'}
+  - {t: BT, h: '3'}
+  - {t: BT, h: '4'}
   - BT CLR
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -192,14 +192,14 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: BT, h: '2'}
-  - {t: ▽, type: trans}
+  - {type: held}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - ''
-  - {type: held}
+  - {t: ▽, type: trans}
   - ''
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
