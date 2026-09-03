@@ -40,7 +40,7 @@ layers:
   - UP ARROW
   - {t: '''', h: RIGHT SHIFT}
   - '3'
-  - Alt+LEFT COMMAND
+  - '2'
   - LALT
   - '1'
   - LEFT COMMAND
@@ -74,7 +74,7 @@ layers:
   - '-'
   - '['
   - ']'
-  - '|'
+  - \
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -142,7 +142,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {type: held}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
