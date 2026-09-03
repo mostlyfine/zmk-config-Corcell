@@ -37,10 +37,10 @@ layers:
   - M
   - ','
   - .
-  - {t: RIGHT SHIFT, h: UP}
-  - ''''
+  - UP ARROW
+  - {t: '''', h: RIGHT SHIFT}
   - '3'
-  - Ctl+LEFT COMMAND
+  - Alt+LEFT COMMAND
   - LALT
   - '1'
   - LEFT COMMAND
@@ -74,7 +74,7 @@ layers:
   - '-'
   - '['
   - ']'
-  - {t: ▽, type: trans}
+  - '|'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
