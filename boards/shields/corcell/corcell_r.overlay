@@ -14,6 +14,10 @@
         , <&gpio1 15 (GPIO_ACTIVE_HIGH)>
         , <&gpio1 14 (GPIO_ACTIVE_HIGH)>
         ;
+    /* Without this the charlieplex driver polls and never arms a GPIO wake
+       source, so the central cannot return from deep sleep. Same interrupt
+       line as the left half; the PCB matrix is identical. */
+    interrupt-gpios = <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 };
 
 &spi2 {
