@@ -69,7 +69,6 @@ include:
 ## 電源設定
 
 - ZMK deep sleep は右手側のみ有効です。左手側は無効ですが、30 秒後の idle state は維持します。
-- 右手側の charlieplex kscan には `interrupt-gpios` を指定しています。これが無いと右手がポーリング動作になり、deep sleep からキー入力で復帰できません。
 - BLE TX power は Corchibi の +8 dBm ではなく、0 dBm にしています。
 - BLE preferred connection interval は `6-12`、latency は `0` にして、ポインタ操作の遅延を抑えています。
 - PAW3222 の `force-awake` は有効にしていません。
