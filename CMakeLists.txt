@@ -9,3 +9,11 @@ target_sources_ifdef(CONFIG_CORCELL_BATTERY_VOLTAGE_DIVIDER app PRIVATE
 target_sources_ifdef(CONFIG_CORCELL_POWER_ON_LED app PRIVATE
   src/status/power_on_led.c
 )
+
+target_sources_ifdef(CONFIG_CORCELL_CRASH_LOG app PRIVATE
+  src/debug/crash_log.c
+)
+
+target_sources_ifdef(CONFIG_CORCELL_PAW3222_BOOT_CHECK app PRIVATE
+  src/pointing/paw3222_boot_check.c
+)
