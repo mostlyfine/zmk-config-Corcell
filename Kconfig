@@ -88,3 +88,14 @@ config CORCELL_PAW3222_BOOT_CHECK
         the firmware reboots up to two times when the sensor is not ready
         shortly after boot, and leaves a note in the crash log when that
         is enabled.
+
+config CORCELL_BT_RADIO_FIXES_BACKPORT
+    bool "Backport Zephyr 4.3 nRF radio fixes to the Bluetooth controller"
+    default y
+    depends on BT_LL_SW_SPLIT && SOC_SERIES_NRF52X
+    help
+        Applies upstream Zephyr commits 355648a69f (reset the radio start
+        PPI in radio_disable) and fe7675e209 (do not clear a pending radio
+        interrupt in radio_isr_set) at link time. Without them the central
+        could leave a connection event current with the radio idle until
+        the controller's prepare pipeline overflowed and asserted.
