@@ -36,3 +36,66 @@ config CORCELL_POWER_ON_LED_MS
     help
         How long the power-on LED stays lit. The pin is disconnected
         afterwards, so this costs nothing once the LED goes dark.
+
+config CORCELL_CRASH_LOG
+    bool "Record fatal errors to flash and reboot instead of halting"
+    depends on SOC_SERIES_NRF52X && FLASH && REBOOT && THREAD_STACK_INFO
+    help
+        Zephyr halts forever on a fatal error, which leaves the keyboard
+        dead until its reset button is pressed and says nothing about why.
+        With this enabled the firmware stores where it died in the last
+        page of the application partition and reboots. It also reboots if
+        the system work queue stops running for 15 seconds. The stored
+        records are printed on the USB serial port every 5 seconds while
+        USB is connected.
+
+if CORCELL_CRASH_LOG
+
+config CORCELL_FW_TAG
+    string "Firmware tag printed with the crash log"
+    default "dev"
+    help
+        Printed on the USB serial port with the crash records, so a log
+        can be matched to the firmware that wrote it. A firmware with a
+        different tag starts a fresh log on its first boot.
+
+config CORCELL_CRASH_LOG_ADDR_LLL_EVENT
+    hex "Address of the controller's 'event' variable (lll.c)"
+    default 0x0
+    help
+        Diagnostic only. RAM address of the file-static 'event' in the
+        Bluetooth controller's lll.c, taken from the linked image. When
+        this and the prepare FIFO address are set, a fatal error also
+        stores the controller's current event and prepare pipeline.
+
+config CORCELL_CRASH_LOG_ADDR_PREP_FIFO
+    hex "Address of the controller's 'mfifo_fifo_prep' variable (ull.c)"
+    default 0x0
+
+config CORCELL_CRASH_LOG_ADDR_PREEMPT_FLAGS
+    hex "Address of the controller's preempt request/ack flags (lll.c)"
+    default 0x0
+
+endif
+
+config CORCELL_PAW3222_BOOT_CHECK
+    bool "Reboot when the PAW3222 did not come up at boot"
+    default y
+    depends on PAW3222 && REBOOT && SOC_SERIES_NRF52X
+    help
+        The PAW3222 driver probes the sensor once at boot; if that fails
+        the trackball stays dead until the next boot. With this enabled
+        the firmware reboots up to two times when the sensor is not ready
+        shortly after boot, and leaves a note in the crash log when that
+        is enabled.
+
+config CORCELL_BT_RADIO_FIXES_BACKPORT
+    bool "Backport Zephyr 4.3 nRF radio fixes to the Bluetooth controller"
+    default y
+    depends on BT_LL_SW_SPLIT && SOC_SERIES_NRF52X
+    help
+        Applies upstream Zephyr commits 355648a69f (reset the radio start
+        PPI in radio_disable) and fe7675e209 (do not clear a pending radio
+        interrupt in radio_isr_set) at link time. Without them the central
+        could leave a connection event current with the radio idle until
+        the controller's prepare pipeline overflowed and asserted.
